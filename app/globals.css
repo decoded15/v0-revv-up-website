@@ -1,0 +1,338 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --card: #f8fafc;
+  --card-foreground: #1f2937;
+  --popover: #ffffff;
+  --popover-foreground: #1f2937;
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: #1e3a8a;
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #1e3a8a;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #f8fafc;
+  --ring: rgba(8, 145, 178, 0.5);
+  --chart-1: #0891b2;
+  --chart-2: #1e3a8a;
+  --chart-3: #64748b;
+  --chart-4: #dc2626;
+  --chart-5: #f97316;
+  --radius: 0.5rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1f2937;
+  --sidebar-primary: #0891b2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1e3a8a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: rgba(8, 145, 178, 0.5);
+}
+
+/* Enhanced dark theme with dynamic blue gradients and modern animations */
+.dark {
+  --background: #0a0f1c;
+  --foreground: #f1f5f9;
+  --card: #1a1f2e;
+  --card-foreground: #f1f5f9;
+  --popover: #1a1f2e;
+  --popover-foreground: #f1f5f9;
+  --primary: #0ea5e9;
+  --primary-foreground: #ffffff;
+  --secondary: #1e40af;
+  --secondary-foreground: #f1f5f9;
+  --muted: #2d3748;
+  --muted-foreground: #94a3b8;
+  --accent: #06b6d4;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(59, 130, 246, 0.2);
+  --input: #1a1f2e;
+  --ring: rgba(14, 165, 233, 0.5);
+  --chart-1: #0ea5e9;
+  --chart-2: #1e40af;
+  --chart-3: #94a3b8;
+  --chart-4: #dc2626;
+  --chart-5: #f97316;
+  --sidebar: #1a1f2e;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #0ea5e9;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2d3748;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: rgba(59, 130, 246, 0.2);
+  --sidebar-ring: rgba(14, 165, 233, 0.5);
+}
+
+/* Dynamic gradient backgrounds for modern sleek look */
+.gradient-bg {
+  background: linear-gradient(135deg, #0a0f1c 0%, #1a1f2e 25%, #0f172a 50%, #1e293b 75%, #0a0f1c 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.gradient-card {
+  background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 50%, #1a1f2e 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #0284c7 100%);
+  background-size: 200% 200%;
+  animation: gradientPulse 3s ease-in-out infinite;
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #1d4ed8 100%);
+  background-size: 200% 200%;
+  animation: gradientPulse 3s ease-in-out infinite;
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 50%, #0284c7 100%);
+  background-size: 200% 200%;
+  animation: gradientPulse 3s ease-in-out infinite;
+}
+
+/* Advanced hover effects with smooth animations */
+.hover-gradient {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.hover-gradient:hover::before {
+  left: 100%;
+}
+
+.hover-gradient:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #06b6d4 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.4);
+}
+
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.card-hover:hover {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 50%, #2d3748 100%);
+  transform: translateY(-6px) rotateX(5deg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Dynamic keyframe animations for modern effects */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradientPulse {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation utility classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* Enhanced body styling with dynamic gradient background */
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #0a0f1c 0%, #1a1f2e 25%, #0f172a 50%, #1e293b 75%, #0a0f1c 100%);
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    min-height: 100vh;
+    animation: gradientShift 20s ease infinite;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  /* Additional utility classes for modern effects */
+  .glass-effect {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(26, 31, 46, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4, #0284c7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient {
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, #1a1f2e, #2d3748) padding-box, linear-gradient(135deg, #0ea5e9, #06b6d4)
+      border-box;
+  }
+}
